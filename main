@@ -1,0 +1,55 @@
+#!/usr/bin/env python2.7
+
+#Author: Chris LeBailly
+
+"""
+Reads 
+"""
+
+from __future__ import division, print_function
+import sys, argparse, collections
+from ballgame import *
+
+def main():
+	"""
+	What is expected in stdin?
+	"""
+
+	options = parse_arguments()
+
+	for line in sys.stdin:
+		line = line.split()
+
+		#Park is a BallPark object, using the dimensions specified in rows 
+		Park = BallPark(dims = line[1:6], heights = line[6:9], rho = line[9],
+																dt = options.dt)
+		#Homers['L'] and Homers['R'] is the number of homers hit by lefties and
+		#righties, respectively.  AtBats['L'] and AtBats['R'] is the number of
+		#at bats by lefties and righties, respectively. 
+		Homers = collections.Counter()
+		AtBats = collections.Counter()
+
+		for at_bat in xrange(options.num_at_bats):
+			handiness, result = Park.BatterTakesAtBat()
+			Homers[handiness] += result
+			AtBats[handiness] += 1
+
+		print("At {} park, Righties = {:.2f} and Lefties = {:.2f}"
+			.format(line[0], 100*Homers['R']/AtBats['R'], 
+				100*Homers['L']/AtBats['L']))
+
+def parse_arguments():
+	""" Parses arguments from the command line """
+
+	parser = argparse.ArgumentParser(description = __doc__)
+
+	parser.add_argument('--num_at_bats', '-n', type=int, default=1000,
+			help = 'Number of at bats taken in each park. Default 1000.')
+
+	parser.add_argument('--dt', type=float, default=0.01,
+			help = 'Step size used for numerical integration. Deafult 0.01')
+
+	return parser.parse_args()
+
+if __name__ == "__main__" :
+    sys.exit(main())
