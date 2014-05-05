@@ -3,7 +3,7 @@
 #Authour: Chris LeBailly
 
 """
-ballgame contains two classes: Baseball and BallPark.
+This module (ballgame) contains two classes: Baseball and BallPark.
 """
 
 from __future__ import print_function, division
@@ -14,9 +14,24 @@ from bisect import bisect
 
 class BallPark(object):
 	"""
-	Summary of BallPark class 
+	The BallPark object contains data about the ballpark, and the functions:
 
-	List of functions
+	__init__ stores the BallPark's dimensions, wall heights, air density,
+	and step size for numierical integration.
+
+	BatterTakesAtBat picks a batter of random handiness, has the batter take 
+	an at bat, and computes the trajectory of the ball.  If the ball is a 
+	homer result is 1, otherwise result is zero.  Returns handiness, result.
+
+	PickBatter picks the handiness of a batter, which 9/10 times is 'R' and
+	1/10 times is 'L'.  Theta, the angle between the batted ball and the line
+	between second and home, is determined.  For righties it's N(22.5,5) and
+	lefties it's N(-22.5,5) where N(x,s) is a normal distribution with mean
+	x and standard deviation s.
+
+	FindWallHeight returns the height of the wall given Theta (defined above)
+
+	DistanceToWall returns the distance to the wall given Theta (defined above)
 	"""
 
 	def __init__(self, dims, heights, rho, dt = 0.01):
@@ -34,11 +49,9 @@ class BallPark(object):
 		self.rho = float(rho)
 		self.dt = dt
 
-		#self.dims.insert(2,self.dims[2])
 		self.dims.insert(-1,self.dims[-1])
-		#Rework this so not needed?
-		#Need this for heights?
-		#Explain why you do this! (documentation)
+		#The last element is repated so integer divison can be used to pick the
+		#needed element of this list in FindWallHeight and DistanceToWall.
 
 	def BatterTakesAtBat(self):
 		"""
@@ -117,9 +130,18 @@ class BallPark(object):
 		
 class Baseball(object):
 	"""
-	Summary of baseball class 
+	The Baseball object contains data about a baseball, and the functions:
 
-	List of functions
+	__init__ sets air density of the baseball's environment, the mass of the
+	ball and bat, the cross-sectional surface area of teh abll, and the initial
+	height of the ball.
+
+	compute_trajectory using a fourth-order Runge-Kutta method to compute the 
+	trajectory of the ball till it hits the ground.
+
+	height computes the height of the ball given the distance from home.
+
+	derivs computes the values of the differential equation.
 	"""
 
 	def __init__(self, rho = 0, m_ball = 0.1453, m_bat = 0.9355, 
