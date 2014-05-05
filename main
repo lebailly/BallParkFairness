@@ -3,7 +3,13 @@
 #Author: Chris LeBailly
 
 """
-Reads 
+This program asseses the fairness of different baseball ballparks through a 
+simulation.  For each ballpark the park's name, dimensions, wall heights, and 
+air resistance are read from a white-space-separated list from stdin (with
+multiple parks on different liens).  For each ballpark, a batter takes an 
+at bat and the program determines if the hit is a home run.  This is repeated
+--num_at_bats times for each park.  The results (shown for both the lefties
+and righties) are outputed to stdout.
 """
 
 from __future__ import division, print_function
@@ -12,7 +18,9 @@ from ballgame import *
 
 def main():
 	"""
-	What is expected in stdin?
+	Reads field information from stdin.  Picks the handiness of the batter,
+	the preforms an at bat --num_at_bats times for each park.  Records number 
+	of Homers, then outputs the results to stdout for each park.
 	"""
 
 	options = parse_arguments()
