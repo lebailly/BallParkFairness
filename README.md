@@ -21,11 +21,13 @@ air resistance. Use `-n` to specify the number of at-bats per ballpark (defaults
 
 * When rewriting this program from C++ to Python I found a few errors.  I would like to find a way to debug the program to make sure it is running accurately.
 
-* One interesting project would be to compare the simulation results to statistics.  One simple static is from [park factors][2].  This can be computed using home runs instead of runs.  This can be computed in SQL.
+* One interesting project would be to compare the simulation results to statistics.  One simple static is from [park factors][2].  This can be computed using home runs instead of runs.  This can be computed in SQL. Compute with pre/post-humidor for coors field.
 
 * Write up a summary of the simulation findings as well.
 
 * Adjust the distributions used in the simulation based on data (i.e. where righties tend to hit the ball).
+
+* Double check documentation, remove ATTENs.
 
 [0]: http://www.comap.com/highschool/contests/himcm/
 [1]: https://dl.dropboxusercontent.com/u/1444851/Website/Cons86.pdf
