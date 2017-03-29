@@ -8,7 +8,7 @@ In the Fall of 2003 I participated in the [COMAP's HiMCM][0] (High School Mathem
 
 My team addressed this with a simulation.  We simulated the trajectory of a batted ball (where the pitch speed, bat speed and ball direction were random variables) for 1000 batters in each park.  We can use this as a metric for fairness.  We decided a park would be fair if a batted ball was equally likely to go out regardless which direction it was hit.  We designed a park accordingly.
 
-Our paper was ranked as "nationally outstanding" and published.  Only 9 of the submissions 274 received this mark.  It is available [here][1] (go to page 10 to see our paper). Keep in mind it was written by sleep dreprived high schoolers so don't judge the writting to harshly ;)
+Our paper was ranked as "nationally outstanding" and published.  Only 9 of the submissions 274 received this mark.  It is available [here][1]. Keep in mind it was written by sleep dreprived high schoolers so don't judge the writting to harshly ;)
 
 I have recently recast the original C++ program in Python and have also addressed this same question using data analytic and sabermetric techniques (though this last part is still a work in progress).  I have not addressed the last part of the orriginal question (regarding the optimal baseball settings) in this recasting (as it is less interesting to me).
 
@@ -18,4 +18,4 @@ Simply run `./main <fields.txt` to execute the program, where `fields.txt` conta
 air resistance. Use `-n` to specify the number of at-bats per ballpark (defaults to 1000).
 
 [0]: http://www.comap.com/highschool/contests/himcm/
-[1]: HiMCM.pdf
+[1]: http://lebailly.github.io/pdfs/Cons86.pdf#page=36
